@@ -579,7 +579,7 @@ p#copyright {
     padding:10px;
     padding-top: 50px;
     padding-bottom: 20px;
-    flex-direction: row;
+    
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: center;
@@ -594,6 +594,10 @@ p#copyright {
 }
 .mid_content_info {
     margin-bottom: 1.7em;
+}
+#slideshow_container img {
+    max-width: 100%;
+}
 @media screen and (max-width:490px){
     #brand{
         margin-bottom: 10px;
