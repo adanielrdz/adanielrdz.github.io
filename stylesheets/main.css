@@ -47,7 +47,8 @@ h1 a {
 
 #main_menu {
     
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
     padding-top:4px;
     
