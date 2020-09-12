@@ -604,3 +604,11 @@ p#copyright {
     }
     
 }
+#brand {
+    background-color:#0069d9;
+    border-radius: 7px 0 0 0;
+    border-color: #005cbf;
+    border-width: 5px;
+    padding:5px;
+    color:white;
+}
