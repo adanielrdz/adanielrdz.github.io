@@ -36,29 +36,11 @@
             
             <div class="container flex-centered-items-container">
                 <div class="mid_content_info mid_content_space">
-                    <h2 id="clean">jnjnjnlkjnklj</h2>
+                    <h2 id="blog_entry_title">jnjnjnlkjnklj</h2>
                     <p>En estas madres no se que poner estaria bien que pensaramos en algo banda jajaja.</p>
-                    <a href="#"><img src="images/arrow_right.png" alt="arrow right" />Read More</a> 
+                    <a href="#">Read More</a> 
                 </div>
-                <div class="mid_content_info mid_content_space">
-
-                    <h2 id="responsive">jhjkhbkjbkjbhjhbkjhbjbh</h2>
-                    <p>kjhbkjbhkjbhjkhbjhbjkhbjhbkhbj</p>
-                    <a href="#"><img src="images/arrow_right.png" alt="arrow right" />Read More</a>
-                    
-                </div>
-                <div class="mid_content_info mid_content_space">
-                    
-                    <h2 id="fully">F</h2>
-                    <p>kjhbbkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjqeb.</p>
-                    <a href="#"><img src="images/arrow_right.png" alt="arrow right" />Read More</a>
-                    
-                </div>
-                <div class="mid_content_info mid_content_space">
-                    <h2 id="ready">y si no sabemos</h2>
-                    <p>Pues hay que borrarlas jajaja pero yo digo que algo bueno puede quedar aqui, borre mucho codigo innecesario, creo yo que con lo que esta aqui se puede trabajar muy bien, ya solo diganme ustedes que piensan</p>
-                    <a href="#"><img src="images/arrow_right.png" alt="arrow right" />Read More</a>   
-                </div>
+                
             
             </div> <!-- END .container -->
                 
@@ -91,5 +73,19 @@
         
     </div> <!-- END #footer -->
     <script src="javascript/styling.js"></script>
+    <script>
+        function getLastArticles(){
+            const lastArticlesURL = "https://beartec.azurewebsites.net/api/GetLastArticles";
+            const http = new XMLHttpRequest();
+
+            http.open("GET",lastArticlesURL);
+            http.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 200){
+                    console.log(JSON.parse(this.responseText).link);
+                }
+            }
+            http.send();
+        }
+    </script>
 </body>
 </html>
