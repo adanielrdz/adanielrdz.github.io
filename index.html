@@ -36,7 +36,7 @@
             
             <div class="container flex-centered-items-container">
                 <div class="mid_content_info mid_content_space">
-                    <h2 id="blog_entry_title">jnjnjnlkjnklj</h2>
+                    <h2 class="blog_entry_title">jnjnjnlkjnklj</h2>
                     <p>En estas madres no se que poner estaria bien que pensaramos en algo banda jajaja.</p>
                     <a href="#">Read More</a> 
                 </div>
@@ -74,6 +74,7 @@
     </div> <!-- END #footer -->
     <script src="javascript/styling.js"></script>
     <script>
+        onload = getLastArticles();
         function getLastArticles(){
             const lastArticlesURL = "https://beartec.azurewebsites.net/api/GetLastArticles";
             const http = new XMLHttpRequest();
@@ -81,11 +82,34 @@
             http.open("GET",lastArticlesURL);
             http.onreadystatechange = function(){
                 if(this.readyState === 4 && this.status === 200){
-                    var jsonResponse = JSON.parse(this.responseText)
+                    var jsonResponse = JSON.parse(this.responseText);
+                    var articlesContainer = document.getElementById("mid_content");
+
                     for(i=0;i<jsonResponse.length;i++){
                         console.log("Titulo: " + jsonResponse[i].titulo);
                         console.log("Descripcion: " + jsonResponse[i].descripcion);
                         console.log("Link: " + jsonResponse[i].link);
+
+                        var article = document.createElement("div");
+                        article.classList.add("container")
+                        article.classList.add("flex-centered-items-container");
+                        var title = document.createElement("h2");
+                        title.classList.add("blog_entry_title");
+                        var description = document.createElement("p");
+                        var link = document.createElement("a");
+                        link.setAttribute("a",jsonResponse[i].link);
+
+                        // populate elements
+                        title.innerText = jsonResponse[i].titulo;
+                        description.innerText = jsonResponse[i].descripcion;
+                        link.innerText = "Leer más";
+
+                        article.appendChild(title);
+                        article.appendChild(descripcion);
+                        article.appendChild(link);
+
+                        articlesContainer.appendChild(article);
+
                     }
                 }
             }
