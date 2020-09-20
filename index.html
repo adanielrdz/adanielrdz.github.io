@@ -85,11 +85,12 @@
                         var article = document.createElement("div");
                         article.classList.add("container")
                         article.classList.add("flex-centered-items-container");
+                        article.classList.add("blog_article");
                         var title = document.createElement("h2");
                         title.classList.add("blog_entry_title");
                         var description = document.createElement("p");
                         var link = document.createElement("a");
-                        link.setAttribute("a",jsonResponse[i].link);
+                        link.setAttribute("href",jsonResponse[i].link);
 
                         // populate elements
                         title.innerText = jsonResponse[i].titulo;
