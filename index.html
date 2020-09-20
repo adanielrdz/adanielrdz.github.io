@@ -81,7 +81,12 @@
             http.open("GET",lastArticlesURL);
             http.onreadystatechange = function(){
                 if(this.readyState === 4 && this.status === 200){
-                    console.log(JSON.parse(this.responseText)[0].link);
+                    var jsonResponse = JSON.parse(this.responseText)
+                    for(i=0;i<=jsonResponse.lenght;i++){
+                        console.log("Titulo: " + jsonResponse[i].titulo);
+                        console.log("Descripcion: " + jsonResponse[i].descripcion);
+                        console.log("Link: " + jsonResponse[i].link);
+                    }
                 }
             }
             http.send();
