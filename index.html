@@ -81,7 +81,7 @@
             http.open("GET",lastArticlesURL);
             http.onreadystatechange = function(){
                 if(this.readyState === 4 && this.status === 200){
-                    console.log(JSON.parse(this.responseText).link);
+                    console.log(JSON.parse(this.responseText)[0].link);
                 }
             }
             http.send();
