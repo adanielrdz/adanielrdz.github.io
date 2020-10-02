@@ -397,8 +397,6 @@ h1 a {
 
 /* blog cards styling*/
 .custom-card-blog-entry{
-    @media (min-width:992px){
-        width: 50%; 
-    }
-    
+    width: 450px;
+    margin-top: 15px;
 }
