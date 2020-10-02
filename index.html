@@ -115,9 +115,6 @@
                     http.onreadystatechange = function () {
                         if (this.readyState === 4 && this.status === 200) {
                             var jsonResponse = JSON.parse(this.responseText);
-                            var articlesContainer = document.getElementById("mid_content");
-                            articlesContainer.innerHTML = "";
-
                             for (i = 0; i < jsonResponse.length; i++) {
                                 var articulo = new Article(
                                     jsonResponse[i].titulo,
@@ -174,7 +171,9 @@
                                 cardElement.appendChild(cardBodyElement);
 
                                 // put card into container
-                                document.getElementById("blog-entries-container").appendChild(cardElement);
+                                var blogEntriesContainer = document.getElementById("blog-entries-container");
+                                blogEntriesContainer.innerHTML = "";
+                                blogEntriesContainer.appendChild(cardElement);
                             }
                         }
                     }
