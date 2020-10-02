@@ -353,6 +353,8 @@ h1 a {
 /* ----- Footer Styling ----- */
 
 
+
+
 /* Responsive design */
 .flex-centered-items-container {
     display: flex;
@@ -391,4 +393,12 @@ h1 a {
     border-width: 5px;
     padding:5px;
     color:white;
+}
+
+/* blog cards styling*/
+.custom-card-blog-entry{
+    @media (min-width:992px){
+        width: 50%; 
+    }
+    
 }
