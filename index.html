@@ -40,14 +40,8 @@
         <!-- articles here-->
         <h5 class="mt-2">Lee nuestro blog</h5>
         <hr>
-        <section class="d-flex flex-wrap mb-2" style="overflow: auto;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+        <section class="d-flex flex-wrap mb-2" id="blog-entries-container">
+
         </section>
 
 
@@ -164,6 +158,9 @@
 
                                 // put resultant card-body into card
                                 cardElement.appendChild(cardBodyElement);
+
+                                // put card into container
+                                document.getElementById("blog-entries-container").appendChild(cardElement);
                             }
                         }
                     }
