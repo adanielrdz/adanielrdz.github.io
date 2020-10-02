@@ -41,7 +41,18 @@
         <h5 class="mt-2">Lee nuestro blog</h5>
         <hr>
         <section class="d-flex flex-wrap mb-2 justify-content-between" id="blog-entries-container">
-
+            <div class="d-flex justify-content-center w-100">
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            
         </section>
 
 
@@ -100,10 +111,12 @@
                     const http = new XMLHttpRequest();
 
                     http.open("GET", lastArticlesURL);
+                    http.timeout = 20000; // 20s
                     http.onreadystatechange = function () {
                         if (this.readyState === 4 && this.status === 200) {
                             var jsonResponse = JSON.parse(this.responseText);
                             var articlesContainer = document.getElementById("mid_content");
+                            articlesContainer.innerHTML = "";
 
                             for (i = 0; i < jsonResponse.length; i++) {
                                 var articulo = new Article(
