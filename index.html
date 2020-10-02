@@ -1,17 +1,20 @@
 <!DOCTYPE>
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Beartec - Home</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
+
+<body class="container">
     <div id="header">
         <div class="custom_navbar">
-            
+
             <a id="brand" href="index.html">
                 <img src="logo.png" height="30px" class="d-inline-block align-top">
                 BearTec
@@ -19,34 +22,44 @@
             <ul id="main_menu">
                 <li class="first_list"><a href="index.html" class="main_menu_first main_current">home</a></li>
                 <li class="first_list"><a href="about.html" class="main_menu_first">about us</a></li>
-                <li class="first_list"><a href="https://beartec.azurewebsites.net/" class="main_menu_first">blog</a></li>
+                <li class="first_list"><a href="https://beartec.azurewebsites.net/" class="main_menu_first">blog</a>
+                </li>
             </ul>
         </div> <!-- END .container -->
     </div> <!-- END #header -->
-    
+
     <div id="main_content">
         <div id="slideshow_area">
             <div class="container">
                 <div id="slideshow_container" class="flex-centered-items-container">
-                    <img src="images/banner1.png" alt="banner1"/>
+                    <img src="images/banner1.png" alt="banner1" />
                 </div> <!-- END #slideshow_container -->
             </div> <!-- END .container -->
-        </div> <!-- END #slideshow_area --> 
-        <div id="mid_content" class="container flex-centered-items-container">
-            
-            
-                
-        </div> <!-- END #mid_content -->
-       
-    <div id="footer">
-            
-            <div  class="footer_info">
-                
+        </div> <!-- END #slideshow_area -->
+
+        <!-- articles here-->
+        <h5 class="mt-2">Lee nuestro blog</h5>
+        <hr>
+        <section class="d-flex flex-wrap mb-2" style="overflow: auto;">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </section>
+
+
+        <div id="footer">
+
+            <div class="footer_info">
+
                 <h4>about us</h4>
                 <p>Grupo de estudiantes de ingenieria apasionados por la tecnologia y el desarrollo de la misma. </p>
-                
+
             </div> <!-- END #footer_about -->
-            
+
             <div class="footer_info">
                 <h4>explore</h4>
                 <ul>
@@ -55,59 +68,105 @@
                     <li><a href="https://beartec.azurewebsites.net/">blog</a></li>
                 </ul>
             </div> <!-- END #footer_about -->
-    
-            
-            <div  class="footer_info">
+
+
+            <div class="footer_info">
                 <h4>connect with us</h4>
                 <a href="https://www.facebook.com/BearTec-109737720692447" id="facebook" title="Facebook">
                     <img src="images/facebook_icon.png">
                 </a>
-        
-    </div> <!-- END #footer -->
-    <script src="javascript/styling.js"></script>
-    <script>
-        onload = getLastArticles();
-        function getLastArticles(){
-            const lastArticlesURL = "https://beartec.azurewebsites.net/api/GetLastArticles";
-            const http = new XMLHttpRequest();
 
-            http.open("GET",lastArticlesURL);
-            http.onreadystatechange = function(){
-                if(this.readyState === 4 && this.status === 200){
-                    var jsonResponse = JSON.parse(this.responseText);
-                    var articlesContainer = document.getElementById("mid_content");
-
-                    for(i=0;i<jsonResponse.length;i++){
-                        console.log("Titulo: " + jsonResponse[i].titulo);
-                        console.log("Descripcion: " + jsonResponse[i].descripcion);
-                        console.log("Link: " + jsonResponse[i].link);
-
-                        var article = document.createElement("div");
-                        article.classList.add("container")
-                        article.classList.add("flex-centered-items-container");
-                        article.classList.add("blog_article");
-                        var title = document.createElement("h2");
-                        title.classList.add("blog_entry_title");
-                        var description = document.createElement("p");
-                        var link = document.createElement("a");
-                        link.setAttribute("href",jsonResponse[i].link);
-
-                        // populate elements
-                        title.innerText = jsonResponse[i].titulo;
-                        description.innerText = jsonResponse[i].descripcion;
-                        link.innerText = "Leer más";
-
-                        article.appendChild(title);
-                        article.appendChild(description);
-                        article.appendChild(link);
-
-                        articlesContainer.appendChild(article);
-
+            </div> <!-- END #footer -->
+            <script src="javascript/styling.js"></script>
+            <script>
+                // erik cavazos, last modified 02/10/2020
+                // script to get up to 4 most recent articles from the blog and insert them in the page
+                onload = getLastArticles();
+                class Article {
+                    constructor(name, description, link){
+                        this.name = name;
+                        this.description = description;
+                        this.link = link;
+                    }
+                    get name() {
+                        return this.name;
+                    }
+                    get description() {
+                        return this.description;
+                    }
+                    get link(){
+                        return this.link;
                     }
                 }
-            }
-            http.send();
-        }
-    </script>
+                function getLastArticles() {
+                    const lastArticlesURL = "https://beartec.azurewebsites.net/api/GetLastArticles";
+                    const http = new XMLHttpRequest();
+
+                    http.open("GET", lastArticlesURL);
+                    http.onreadystatechange = function () {
+                        if (this.readyState === 4 && this.status === 200) {
+                            var jsonResponse = JSON.parse(this.responseText);
+                            var articlesContainer = document.getElementById("mid_content");
+
+                            for (i = 0; i < jsonResponse.length; i++) {
+                                var articulo = new Article(
+                                    jsonResponse[i].titulo,
+                                    jsonResponse[i].descripcion,
+                                    jsonResponse[i].link
+                                );
+                                
+                                console.log("Titulo: " + articulo.name);
+                                console.log("Descripcion: " + articulo.description);
+                                console.log("Link: " + articulo.link);
+                                /*
+                                make this with js
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Special title treatment</h5>
+                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                                */
+                                // create empty div for card
+                                var cardElement = document.createElement("div");
+                                cardElement.classList.add("card");
+                                
+                                // create empty div for card-body
+                                var cardBodyElement = document.getElementById("div");
+                                cardBodyElement.classList.add("card-body");
+
+                                // create h5 for title that goes into card-body
+                                var h5Element = document.createElement("h5");
+                                h5Element.classList.add("card-title");
+
+                                // create p element that goes into card-body
+                                var pElement = document.createElement("p");
+                                pElement.classList.add("card-text");
+
+                                // create a element that goes into card-body
+                                var aElement = document.createElement("a");
+                                aElement.classList.add("m-3");
+
+                                // fill in h5, p and a
+                                h5Element.innerText = articulo.name;
+                                pElement.innerText = articulo.description;
+                                aElement.innerText = "Leer más";
+                                aElement.setAttribute("href",articulo.link);
+
+                                // put h5, p and a into card-body
+                                cardBodyElement.appendChild(h5Element);
+                                cardBodyElement.appendChild(pElement);
+                                cardBodyElement.appendChild(aElement);
+
+                                // put resultant card-body into card
+                                cardElement.appendChild(cardBodyElement);
+                            }
+                        }
+                    }
+                    http.send();
+                }
+            </script>
 </body>
+
 </html>
