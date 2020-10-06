@@ -6,12 +6,13 @@
     <title>Beartec - Home</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/reset.css" />
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+    <script src="https://kit.fontawesome.com/fde197fc03.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
-<body class="container">
+<body style="background-color: #1d2124;">
     <div id="header">
         <div class="custom_navbar">
 
@@ -26,60 +27,61 @@
             </ul>
         </div> <!-- END .container -->
     </div> <!-- END #header -->
-
-    <div id="main_content">
-        <div id="slideshow_area">
-            <div class="container">
-                <div id="slideshow_container" class="flex-centered-items-container">
-                    <img src="images/banner1.png" alt="banner1" />
-                </div> <!-- END #slideshow_container -->
-            </div> <!-- END .container -->
-        </div> <!-- END #slideshow_area -->
-
-        <!-- articles here-->
-        <h5 class="mt-2">Lee nuestro blog</h5>
-        <hr>
-        <section class="d-flex flex-wrap mb-2 justify-content-between" id="blog-entries-container">
-            <div class="d-flex justify-content-center w-100">
-                <div class="spinner-grow" role="status">
-                    <span class="sr-only">Loading...</span>
+    <div class="container" style="color:white">
+        <div id="main_content">
+            <div id="slideshow_area">
+                <div class="container">
+                    <div id="slideshow_container" class="flex-centered-items-container">
+                        <img src="images/banner1.png" alt="banner1" />
+                    </div> <!-- END #slideshow_container -->
+                </div> <!-- END .container -->
+            </div> <!-- END #slideshow_area -->
+    
+            <!-- articles here-->
+            <h5 class="mt-2">Lee nuestro blog</h5>
+            <hr>
+            <section class="d-flex flex-wrap mb-2 justify-content-between" id="blog-entries-container">
+                <div class="d-flex justify-content-center w-100 mb-3">
+                    <div class="spinner-grow" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    
                 </div>
-                <div class="spinner-grow" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <div class="spinner-grow" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
+                
+            </section>
             </div>
-            
-        </section>
+    </div>
+    <div id="footer">
+        <div class="footer_info">
+            <h4>about us</h4>
+            <p>Grupo de estudiantes de ingenieria apasionados por la tecnologia y el desarrollo de la misma. </p>
+        </div> 
+        <div class="footer_info">
+            <h4>explore</h4>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="https://beartec.azurewebsites.net/">blog</a></li>
+            </ul>
+        </div>
+        <div class="footer_info">
+            <h4>connect with us</h4>
+            <a href="https://www.facebook.com/BearTec-109737720692447" id="facebook" title="Facebook">
+                <img src="images/facebook_icon.png">
+            </a>
+        </div>
+    </div>
 
 
-        <div id="footer">
-
-            <div class="footer_info">
-
-                <h4>about us</h4>
-                <p>Grupo de estudiantes de ingenieria apasionados por la tecnologia y el desarrollo de la misma. </p>
-
-            </div> <!-- END #footer_about -->
-
-            <div class="footer_info">
-                <h4>explore</h4>
-                <ul>
-                    <li><a href="index.html">home</a></li>
-                    <li><a href="https://beartec.azurewebsites.net/">blog</a></li>
-                </ul>
-            </div> <!-- END #footer_about -->
+    
 
 
-            <div class="footer_info">
-                <h4>connect with us</h4>
-                <a href="https://www.facebook.com/BearTec-109737720692447" id="facebook" title="Facebook">
-                    <img src="images/facebook_icon.png">
-                </a>
-
-            </div> <!-- END #footer -->
+        
             <script src="javascript/styling.js"></script>
             <script>
                 // erik cavazos, last modified 02/10/2020
@@ -109,7 +111,7 @@
                     const http = new XMLHttpRequest();
 
                     http.open("GET", lastArticlesURL);
-                    http.timeout = 20000; // 20s
+                    http.timeout = 35000; // 20s
                     http.onreadystatechange = function () {
                         if (this.readyState === 4 && this.status === 200) {
                             var jsonResponse = JSON.parse(this.responseText);
@@ -174,6 +176,16 @@
                                 
                                 blogEntriesContainer.appendChild(cardElement);
                             }
+                        }else{
+                            var blogEntriesContainer = document.getElementById("blog-entries-container");
+                            var errorMsg = document.createElement("div");
+                            errorMsg.classList.add("alert");
+                            errorMsg.classList.add("alert-danger");
+                            errorMsg.classList.add("w-100");
+
+                            errorMsg.innerHTML = '<i class="fas fa-sad-tear"></i> Error al conectar con el blog';
+                            blogEntriesContainer.innerHTML = "";
+                            blogEntriesContainer.appendChild(errorMsg)
                         }
                     }
                     http.send();
