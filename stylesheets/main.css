@@ -216,3 +216,8 @@ body {
     height: 50px;
     
 }
+
+/*Workarround for streching images on Safari*/
+.d-flex > img{
+    align-self: flex-start;
+}
