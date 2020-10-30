@@ -221,3 +221,6 @@ body {
 .d-flex > img{
     align-self: flex-start;
 }
+.flex-centered-items-container > img{
+    align-self: flex-start;
+}
