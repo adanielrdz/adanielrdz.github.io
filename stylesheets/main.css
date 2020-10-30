@@ -2,6 +2,7 @@
 
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient( 180deg,#003366,black,black,black,#003366);
 }
 
 .container, #latest_works, #bottom_content, #download {
@@ -23,7 +24,6 @@ body {
 /* ----- Header Styling ----- */
 
 #header {
-    background: #e8ebf1;
     padding-top:50px;
     padding-bottom:30px
 }
@@ -61,7 +61,7 @@ h1 a {
 }
 
 .main_menu_first {
-    color: #000;
+    color: white;
     font-size: 13px;
     font-weight: bold;
     padding: 8px 4px;
@@ -133,8 +133,7 @@ h1 a {
 /* ----- Slideshow Styling ----- */
 
 #slideshow_area {
-    background: #87CEFA url(../images/banner_shadow.png) repeat-x;
-    border-top: 1px solid #A9A9A9;
+
     padding: 19px 0 28px 0;
 }
 
@@ -277,8 +276,7 @@ h1 a {
 /* ----- Footer Styling ----- */
 
 #footer {
-    background: #e8ebf1;
-    border-top: 1px solid #d9d9d9;
+
     clear: both;
     padding:10px;
     display: flex;
@@ -287,7 +285,7 @@ h1 a {
 }
 
 #footer p, #footer a {
-    color: #363636;
+    color: white;
     font-size: 14px;
 }
 
@@ -296,6 +294,7 @@ h1 a {
     font-weight: bold;
     text-transform: uppercase;
     margin: 0 0 21px 0;
+    color: white;
 }
 
 .footer_info {
