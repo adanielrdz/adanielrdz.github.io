@@ -372,6 +372,7 @@ h1 a {
 }
 #brand {
     margin-left:5px;
+    font-size: 26px;
 }
 .mid_content_info {
     margin-bottom: 1.7em;
@@ -386,9 +387,7 @@ h1 a {
     
 }
 #brand {
-    background-color:#0069d9;
-    border-radius: 7px 0 0 0;
-    border-color: #005cbf;
+    height: 90%;
     border-width: 5px;
     padding:5px;
     color:white;
@@ -399,4 +398,8 @@ h1 a {
     width: 450px;
     margin-top: 15px;
 
+}
+#brand_picture{
+    height: 50px;
+    
 }
