@@ -8,13 +8,13 @@
                         this.description = _description;
                         this.link = _link;
                     }
-                    get name() {
+                    getName() {
                         return this.name;
                     }
-                    get description() {
+                    getDescription() {
                         return this.description;
                     }
-                    get link(){
+                    getLink(){
                         return this.link;
                     }
                 }
@@ -36,9 +36,9 @@
                                     jsonResponse[i].link
                                 );
                                 
-                                console.log("Titulo: " + articulo.name);
-                                console.log("Descripcion: " + articulo.description);
-                                console.log("Link: " + articulo.link);
+                                console.log("Titulo: " + articulo.getName());
+                                console.log("Descripcion: " + articulo.getDescription());
+                                console.log("Link: " + articulo.getLink());
                                 /*
                                 make this with js
                                 <div class="card">
