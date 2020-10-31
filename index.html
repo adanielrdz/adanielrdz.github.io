@@ -115,7 +115,7 @@
                             var blogEntriesContainer = document.getElementById("blog-entries-container");
                             blogEntriesContainer.innerHTML = "";
                             for (i = 0; i < jsonResponse.length; i++) {
-                                var articulo = new Article(
+                                let articulo = new Article(
                                     jsonResponse[i].titulo,
                                     jsonResponse[i].descripcion,
                                     jsonResponse[i].link
