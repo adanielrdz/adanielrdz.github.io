@@ -88,13 +88,10 @@
                 // script to get up to 4 most recent articles from the blog and insert them in the page
                 onload = getLastArticles();
                 class Article {
-                    name;
-                    description;
-                    link;
-                    constructor(name, description, link){
-                        this.name = name;
-                        this.description = description;
-                        this.link = link;
+                    constructor(_name, _description, _link){
+                        this.name = _name;
+                        this.description = _description;
+                        this.link = _link;
                     }
                     get name() {
                         return this.name;
