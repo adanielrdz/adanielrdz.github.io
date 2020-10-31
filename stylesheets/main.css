@@ -200,7 +200,6 @@ body {
     
 }
 #brand {
-    height: 90%;
     border-width: 5px;
     padding:5px;
     color:white;
@@ -214,7 +213,6 @@ body {
 }
 #brand_picture{
     height: 50px;
-    
 }
 
 /*Workarround for streching images on Safari*/
